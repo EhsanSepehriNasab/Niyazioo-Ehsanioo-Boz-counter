@@ -1,0 +1,171 @@
+/* styles.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+@keyframes cardColorChange {
+    0% { background-color: rgba(255, 182, 193, 0.7); }
+    50% { background-color: rgba(255, 105, 180, 0.7); }
+    100% { background-color: rgba(255, 182, 193, 0.7); }
+}
+
+@keyframes cardAnimation {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(10deg); }
+    100% { transform: rotateY(0deg); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes fall {
+    0% { top: -50px; opacity: 1; }
+    100% { top: 100vh; opacity: 0; }
+}
+
+@keyframes popInOut {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0); }
+}
+
+#card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+    background: rgba(255, 182, 193, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 2px solid #fff;
+    width: 400px;
+    height: 530px;
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    animation: cardColorChange 10s infinite, cardAnimation 5s infinite;
+}
+
+#logo {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+#quote {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+    line-height: 1.5;
+    transition: opacity 0.5s ease;
+}
+
+#quote.shake {
+    animation: shake 0.6s ease;
+}
+
+#coin-button {
+    background: #f9aee8;
+    border: 5px solid rgb(236, 100, 100);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), inset 0 5px 10px rgba(255, 255, 255, 0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#coin-button:active {
+    transform: scale(0.9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 5px 10px rgba(255, 255, 255, 0.4);
+}
+
+#coin-counter {
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    color: #fff;
+}
+
+#kiss-emoji {
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#kiss-emoji.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+#kiss-emoji.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+#name {
+    font-size: 24px;
+    font-family: 'Sacramento', cursive;
+    color: #fff;
+    margin: 5px 0;
+}
+#falling-emojis {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.falling-emoji {
+    position: absolute;
+    font-size: 24px;
+    animation: fall 5s linear forwards;
+    z-index: 2;
+}
